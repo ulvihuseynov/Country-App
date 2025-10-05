@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import Card from './Card'
+import RandomCard from './RandomCard'
 
 function Main({data,region,searchCountry,setSearchCountry}) {
     const [status,setStatus]=useState(false)
 	const filteredData=data.filter(country=>region ? country.region===region  : data)
 // console.log(filteredData)
+console.log(searchCountry)
   return (
     <>
      <section className="dark:bg-gray-100 dark:text-gray-800">
@@ -20,18 +22,26 @@ function Main({data,region,searchCountry,setSearchCountry}) {
 			<button onClick={()=>setStatus(!status)} className="px-8 py-3 m-2 text-lg border rounded dark:text-gray-900 dark:border-gray-300">Search</button>
             	
 		</div>
+	</div>
+
+		</section> 
+<div className='pb-16 dark:bg-gray-100 dark:text-gray-800 flex justify-center items-center'>
+	{
+	!status && <RandomCard data={data}/>
+}
+</div>
     
 
-	</div>
-	 <ul className='flex justify-center items-center flex-wrap gap-4'>
+	 <ul className='dark:bg-gray-100 dark:text-gray-800 flex justify-center items-center flex-wrap gap-4'>
 		{
 		filteredData.
-		map(item=>{
+		filter(item=>item?.name?.common?.toLowerCase().includes(searchCountry?.toLowerCase())).
+		map(item=>(
 			<Card key={item.alpha3Code} {...item} />
-		} )
+		 ) )
 	 }
 	 </ul>
-</section> 
+
     </>
   )
 }

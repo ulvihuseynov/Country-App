@@ -6,7 +6,7 @@ import Header from './components/Header'
 import Main from './components/Main'
 function App() {
     const [region,setRegion]=useState(null)
-    const [searchCountry,setSearchCountry]=useState([])
+    const [searchCountry,setSearchCountry]=useState('')
 
   const [data,setData]=useState([])
     useEffect(()=>{

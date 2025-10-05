@@ -22,7 +22,9 @@ function Header({data,setRegion}) {
 				))
 			}
 			<li  aria-label="Back to homepage" className="flex items-center p-2">
-			<p onClick={()=>setRegion(null)}>All</p>
+			<p onClick={()=>setRegion(null)}>
+				<img src="https://i.pinimg.com/736x/60/17/25/60172585078b61155e227c3af24016e4.jpg" alt="" className='w-16'/>
+			</p>
 		</li>
 			{
 				rightSide.map(region=>(
